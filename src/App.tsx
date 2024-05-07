@@ -5,6 +5,7 @@ import {Toggle} from "./components/toggle";
 import {DebouncedInput} from "./components/debouncedInput";
 import {PhoneInput} from "./components/phoneInput";
 import {FocusedInput} from "./components/focusedInput";
+import {OutsideClickHandler} from "./components/outsideClickHandler";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <DebouncedInput/>
                 <PhoneInput/>
                 <FocusedInput/>
+                <OutsideClickHandler/>
             </header>
         </div>
     );
