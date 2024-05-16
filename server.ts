@@ -1,10 +1,9 @@
 import {createHelloWorld} from "./services/createHelloWorld";
-import {once} from "./services/once";
-import {memoize} from "./services/memoize";
-import {curry} from "./services/curry";
-import {promisePool} from "./services/promisePool";
+import {throttle} from "./services/throttle";
+import {promiseAll} from "./services/promiseAll.js";
 
 const express = require('express');
+
 const app = express();
 const port = 3001;
 
@@ -18,5 +17,6 @@ app.listen(port, () => {
 });
 
 
-const sleep = (t:number) => new Promise(res => setTimeout(res, t));
-promisePool([() => sleep(500), () => sleep(400)], 1).then(console.log);
+// const promise = promiseAll([() => new Promise(res => res(42)), () => new Promise(res => res(24))]);
+const promise = promiseAll([() => new Promise(resolve => setTimeout(() => resolve(1), 200)), () => new Promise((resolve, reject) => setTimeout(() => reject("Error"), 100))]);
+ promise.then(console.log).catch(console.log);
