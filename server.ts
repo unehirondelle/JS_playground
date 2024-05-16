@@ -1,6 +1,8 @@
 import {createHelloWorld} from "./services/createHelloWorld";
 import {once} from "./services/once";
 import {memoize} from "./services/memoize";
+import {curry} from "./services/curry";
+import {promisePool} from "./services/promisePool";
 
 const express = require('express');
 const app = express();
@@ -16,11 +18,5 @@ app.listen(port, () => {
 });
 
 
-let callCount = 0;
-const memoizedFn = memoize(function (a, b) {
-    callCount += 1;
-    return a + b;
-})
-console.log(memoizedFn(2, 3)) // 5
-console.log(memoizedFn(2, 3)) // 5
-console.log(callCount) // 1
+const sleep = (t:number) => new Promise(res => setTimeout(res, t));
+promisePool([() => sleep(500), () => sleep(400)], 1).then(console.log);
