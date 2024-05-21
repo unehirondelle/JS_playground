@@ -1,4 +1,6 @@
-const areDeeplyEqual = (obj1, obj2) => {
+const fnItself = require('../services/areDeeplyEqual');
+
+module.exports.areDeeplyEqual = (obj1, obj2) => {
     let isEqual = true;
     if (obj1 === null || obj2 === null) {
         isEqual = obj1 === obj2;
@@ -11,7 +13,7 @@ const areDeeplyEqual = (obj1, obj2) => {
                     isEqual = false;
                 }
             } else if (typeof obj1[k] === 'object' && obj1[k] !== null) { // array and object
-                areDeeplyEqual(obj1[k], obj2[k]);
+                isEqual = fnItself.areDeeplyEqual(obj1[k], obj2[k]); // experiment to mock recursion
             } else {
                 if (!Object.hasOwn(obj2, k) || obj1[k] !== obj2[k]) { // primitives
                     isEqual = false;
@@ -22,11 +24,14 @@ const areDeeplyEqual = (obj1, obj2) => {
     return isEqual;
 };
 
+// module.exports.fnItself = areDeeplyEqual;
+
+
 // console.log(areDeeplyEqual({a: 1, b: 3}, {a: 1, b: 2})); // false
 // console.log(areDeeplyEqual({a: 1, b: 3}, {a: 1, b: 3})); // true
 // console.log(areDeeplyEqual({a: 1, b: "3"}, {a: 1, b: "2"})); // false
 // console.log(areDeeplyEqual({a: 1, b: "3"}, {a: 1, b: "3"})); // true
-console.log(areDeeplyEqual({a: 1, b: ["3"]}, {a: 1, b: ["2"]})); // false TODO to fix
+// console.log(areDeeplyEqual({a: ["3"], b: 1}, {a: ["2"], b: 1})); // false TODO to fix
 // console.log(areDeeplyEqual({a: 1, b: ["3"]}, {a: 1, b: ["3"]})); // true
 // console.log(areDeeplyEqual({a: 1, b: {a: {b: 3}}}, {a: 1, b: {a: {b: 3}}})); // true
 // console.log(areDeeplyEqual({a: 1, b: {a: {b: 3}}, c: 1}, {a: 1, b: {a: {b: 3}}, c: 1})); // true
