@@ -1,6 +1,6 @@
 type Primitive = string | number | boolean | null | undefined;
 
-export const expect = (val: Primitive) => {
+export const expectRes = (val: Primitive) => {
     const toBe = (another: Primitive) => {
         if (val === another) {
             return true;

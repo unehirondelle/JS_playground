@@ -13,5 +13,7 @@ function decrement() {
     return this.count;
 }
 
-console.log(increment.callPolyfill({count: 1})); //2
-console.log(decrement.callPolyfill({count: 1})); //0
+module.exports.Function = Function;
+
+// console.log(increment.callPolyfill({count: 1})); //2
+// console.log(decrement.callPolyfill({count: 1})); //0

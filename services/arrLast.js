@@ -5,5 +5,7 @@ Array.prototype.last = function () {
     return -1;
 };
 
-console.log(new Array(null, {}, 3).last()) //3
-console.log(new Array().last()) //-1
+module.exports.Array = Array;
+
+// console.log(new Array(null, {}, 3).last()) //3
+// console.log(new Array().last()) //-1
