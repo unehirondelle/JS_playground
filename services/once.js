@@ -1,7 +1,7 @@
-export const once = (fn: (...args: any[]) => any) => {
+const once = (fn) => {
     let called = false
 
-    return (...args: any[]) => {
+    return (...args) => {
         if (!called) {
             called = true;
             return fn(...args);
@@ -17,5 +17,7 @@ export const once = (fn: (...args: any[]) => any) => {
     //     }
     // }
 };
+
+module.exports = {once};
 
 

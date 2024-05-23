@@ -36,6 +36,7 @@ const compactObject = (obj) => {
     return res;
 }
 
+module.exports = {compactObject};
 // iterative deep-first search
 //     const stack = [[obj, Array.isArray(obj) ? [] : {}]];
 //
@@ -65,7 +66,7 @@ const compactObject = (obj) => {
 //     }
 //     return res;
 // };
-
-console.log(compactObject([null, 0, false, 1])) //[1]
-console.log(compactObject({"a": null, "b": [false, 1]})) //{"b": [1]}
-console.log(compactObject([null, 0, 5, [0], [false, 16]])) //[5, [], [16]]
+//
+// console.log(compactObject([null, 0, false, 1])) //[1]
+// console.log(compactObject({"a": null, "b": [false, 1]})) //{"b": [1]}
+// console.log(compactObject([null, 0, 5, [0], [false, 16]])) //[5, [], [16]]

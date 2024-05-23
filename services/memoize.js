@@ -1,7 +1,7 @@
-export const memoize = (fn: (...args: any[]) => any) => {
-    const cache: { [key: string]: any } = {}
+const memoize = (fn) => {
+    const cache = {}
 
-    return (...args: any[]) => {
+    return (...args) => {
         const key = JSON.stringify(args);
 
         if (!(key in cache)) {
@@ -10,3 +10,5 @@ export const memoize = (fn: (...args: any[]) => any) => {
         return cache[key];
     }
 };
+
+module.exports = {memoize};

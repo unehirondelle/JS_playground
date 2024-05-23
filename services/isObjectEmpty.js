@@ -4,3 +4,5 @@ const isObjectEmpty = obj => {
     }
     return true;
 };
+
+module.exports = {isObjectEmpty};

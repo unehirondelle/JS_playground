@@ -58,5 +58,7 @@ const jsonToMatrix = arr => {
     return matrix;
 };
 
-console.log(jsonToMatrix([{b: 1, a: 2}, {b: 3, a: 4}])); //[["a", "b"], [2, 1], [4, 3]];
-console.log(jsonToMatrix([{a: 1, b: 2}, {c: 3, d: 4}, {}])); // [["a", "b", "c", "d"], [1, 2, "", ""], ["", "", 3, 4], ["","","",""]];
+module.exports = {jsonToMatrix};
+
+// console.log(jsonToMatrix([{b: 1, a: 2}, {b: 3, a: 4}])); //[["a", "b"], [2, 1], [4, 3]];
+// console.log(jsonToMatrix([{a: 1, b: 2}, {c: 3, d: 4}, {}])); // [["a", "b", "c", "d"], [1, 2, "", ""], ["", "", 3, 4], ["","","",""]];

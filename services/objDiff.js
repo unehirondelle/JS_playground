@@ -37,33 +37,35 @@ const objDiff = (o1, o2) => {
     }
 
     return diff;
+};
 
-}
-console.log(objDiff(
-    {a: 1, v: 3, x: [], z: {a: null}},
-    {a: 2, v: 4, x: [], z: {a: 2}}
-)); // {a: [1, 2], v: [3, 4], z: {a:[null, 2]}}
+module.exports = {objDiff};
 
-console.log(objDiff(
-    {a: 5, v: 6, z: [1, 2, 4, [2, 5, 7]]},
-    {a: 5, v: 7, z: [1, 2, 3, [1]]}
-));
-// {
-//     v: [6, 7],
-//     z: {
-//         2: [4, 3],
-//         3: {
-//             0: [2, 1]
-//         }
-//     }
-
-
-console.log(objDiff(
-    {a: {b: 1}},
-    {a: [5]}
-));//{a:[{b:1}, 5]}
-
-console.log(objDiff(
-    {a: [1, 2, {}], b: false},
-    {b: false, a: [1, 2, {}]}
-));//{}
+// console.log(objDiff(
+//     {a: 1, v: 3, x: [], z: {a: null}},
+//     {a: 2, v: 4, x: [], z: {a: 2}}
+// )); // {a: [1, 2], v: [3, 4], z: {a:[null, 2]}}
+//
+// console.log(objDiff(
+//     {a: 5, v: 6, z: [1, 2, 4, [2, 5, 7]]},
+//     {a: 5, v: 7, z: [1, 2, 3, [1]]}
+// ));
+// // {
+// //     v: [6, 7],
+// //     z: {
+// //         2: [4, 3],
+// //         3: {
+// //             0: [2, 1]
+// //         }
+// //     }
+//
+//
+// console.log(objDiff(
+//     {a: {b: 1}},
+//     {a: [5]}
+// ));//{a:[{b:1}, 5]}
+//
+// console.log(objDiff(
+//     {a: [1, 2, {}], b: false},
+//     {b: false, a: [1, 2, {}]}
+// ));//{}

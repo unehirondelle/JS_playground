@@ -1,10 +1,10 @@
-export const createCounter = (n: number) => {
+const createCounter = (n) => {
     return () => {
         return n++;
     };
 };
 
-export const createCounterII = (init: number) => {
+const createCounterII = (init) => {
     let currentCount = init;
 
     const increment = () => {
@@ -23,4 +23,6 @@ export const createCounterII = (init: number) => {
     return {
         increment, decrement, reset
     }
-}
+};
+
+module.exports = {createCounter, createCounterII};

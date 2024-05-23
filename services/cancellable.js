@@ -1,4 +1,4 @@
-export const cancellableTimer = (fn: (...args: any[]) => any, args: any[], t: number): () => void => {
+const cancellableTimer = (fn, args, t) => {
     const timer = setTimeout(() => fn.apply(null, args), t);
     //null tells to execute the fn in global scope vs scope of some other object - we're calling a fn defined in the global scope
 
@@ -7,7 +7,7 @@ export const cancellableTimer = (fn: (...args: any[]) => any, args: any[], t: nu
     };
 };
 
-export const cancellableInterval = (fn: (...args: any[]) => any, args: any[], t: number): () => void => {
+const cancellableInterval = (fn, args, t) => {
     const fnCall = () => {
         fn.apply(null, args);
     };
@@ -20,3 +20,5 @@ export const cancellableInterval = (fn: (...args: any[]) => any, args: any[], t:
         clearInterval(interval);
     }
 };
+
+module.exports = {cancellableInterval, cancellableTimer};

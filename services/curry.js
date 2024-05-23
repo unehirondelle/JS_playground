@@ -1,6 +1,6 @@
-export const curry = (fn: (...args: any[]) => any) => {
-    let nums: any[] = [];
-    const curried = (...args: any[]) => { // args in curried function call
+const curry = (fn) => {
+    let nums = [];
+    const curried = (...args) => { // args in curried function call
         nums = [...nums, ...args]; // any time we pass arguments in curried function they need to be appended to existing args
 
         if (fn.length === nums.length) {
@@ -28,4 +28,6 @@ export const curry = (fn: (...args: any[]) => any) => {
     //
     // };
     // return curried;
-}
+};
+
+module.exports = {curry};

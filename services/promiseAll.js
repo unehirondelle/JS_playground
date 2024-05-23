@@ -1,3 +1,4 @@
+const {log} = require("./log");
 const promiseAll = (fns) => {
     return new Promise((resolve, reject) => {
         let inProgress = 0;
@@ -24,6 +25,8 @@ const promiseAll = (fns) => {
     });
 };
 
+module.exports = {promiseAll};
+
 const date = new Date();
 
 const promise1 = () => new Promise(resolve => setTimeout(() => resolve(1), 500));
@@ -33,10 +36,6 @@ const promise3 = () => new Promise((resolve, reject) => setTimeout(() => reject(
 // promise2().then(console.log).catch(console.log);
 
 
-const promise = promiseAll([promise1, promise3]);
-promise.then(console.log).catch(console.log);
-log("LALA");
-
-function log(str) {
-    console.log(`${new Date().toISOString()} ${str}`);
-}
+// const promise = promiseAll([promise1, promise3]);
+// promise.then(console.log).catch(console.log);
+// log("LALA");
