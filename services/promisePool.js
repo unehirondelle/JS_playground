@@ -1,4 +1,4 @@
-export const promisePool = async (fns: Function[], n: number): Promise<void> => {
+const promisePool = async (fns, n) => {
     // return new Promise(resolve => {
     //     let i = 0; // track current promise index
     //     let inProgress = 0; // track pending promises
@@ -37,3 +37,11 @@ export const promisePool = async (fns: Function[], n: number): Promise<void> => 
 
     await Promise.all(nPromises);
 };
+
+module.exports = {promisePool};
+
+// const sleep = t => new Promise(res => setTimeout(res, t));
+// const fn1 = () => sleep(500);
+// const fn2 = () => sleep(400);
+// const start = Date.now()
+// promisePool([fn1, fn2]).then(() => console.log(Date.now() - start))

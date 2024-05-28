@@ -1,0 +1,30 @@
+{
+  "name": "react-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "main": "server.ts",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.ts",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "test": "jest",
+    "start": "node server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/setupTests.js"
+    ]
+  }
+}

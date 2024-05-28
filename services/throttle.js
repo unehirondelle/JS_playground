@@ -1,6 +1,6 @@
-export const throttle = (fn: Function, t: number): Function => {
+const throttle = (fn, t) => {
     let isThrottled = false;
-    let nextArgs: any = null; // args state for the next fn call
+    let nextArgs = null; // args state for the next fn call
 
     const helper = () => {
         isThrottled = false;
@@ -13,7 +13,7 @@ export const throttle = (fn: Function, t: number): Function => {
         }
     };
 
-    return (...args: any[]) => {
+    return (...args) => {
         if (isThrottled) {
             nextArgs = args; // set args for the next fn call if fn was triggered before t time passed
         } else {
@@ -23,3 +23,11 @@ export const throttle = (fn: Function, t: number): Function => {
         }
     };
 };
+
+module.exports = {throttle};
+
+// const start = Date.now()
+// const throttled = throttle((value) => console.log(value, Date.now() - start), 1000);
+//
+// throttled('log');
+// throttled('log');

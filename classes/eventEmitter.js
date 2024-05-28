@@ -1,4 +1,4 @@
-class EventEmitter {
+module.exports = class EventEmitter {
     eventMap = {}; // event -> Set() of callbacks
 
     subscribe(eventName, callback) {
@@ -21,17 +21,17 @@ class EventEmitter {
         });
         return res;
     }
-}
+};
 
-const emitter = new EventEmitter();
-
-// Subscribe to the onClick event with onClickCallback
-function onClickCallback() {
-    return 99;
-}
-
-const sub = emitter.subscribe('onClick', onClickCallback);
-
-console.log(emitter.emit('onClick')); // [99]
-console.log(sub.unsubscribe()); // undefined
-console.log(emitter.emit('onClick')); // []
+// const emitter = new EventEmitter();
+//
+// // Subscribe to the onClick event with onClickCallback
+// function onClickCallback() {
+//     return 99;
+// }
+//
+// const sub = emitter.subscribe('onClick', onClickCallback);
+//
+// console.log(emitter.emit('onClick')); // [99]
+// console.log(sub.unsubscribe()); // undefined
+// console.log(emitter.emit('onClick')); // []

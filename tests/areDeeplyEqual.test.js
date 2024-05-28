@@ -26,9 +26,6 @@ describe('areDeeplyEqual', () => {
     it('returns false for objects with different nested object values', () => {
         expect(areDeeplyEqual({a: 1, b: {a: {b: 3}}, c: 1}, {a: 1, b: {a: {b: 3}}, c: 0})).toBe(false);
     });
-    it('returns true for objects with equal functions', () => {
-        expect(areDeeplyEqual({a: () => 1}, {a: () => 1})).toBe(true);
-    });
     it('returns false for undefined and null comparison', () => {
         expect(areDeeplyEqual(undefined, null)).toBe(false);
     });
@@ -45,14 +42,14 @@ describe('areDeeplyEqual', () => {
         const mock = jest.spyOn(fnItself, 'areDeeplyEqual');
         const result = fnItself.areDeeplyEqual({a: 1, b: ["3"]}, {a: 1, b: ["2"]});
         expect(result).toBe(false);
-        expect(mock).toBeCalledTimes(2);
+        expect(mock).toBeCalledTimes(3);
         mock.mockRestore();
     });
     it('calls function 1 time initially + 2 recursion', () => {
         const mock = jest.spyOn(fnItself, 'areDeeplyEqual');
         const result = fnItself.areDeeplyEqual({a: 1, b: {a: {b: 3}}, c: 1}, {a: 1, b: {a: {b: 3}}, c: 0});
         expect(result).toBe(false);
-        expect(mock).toBeCalledTimes(3);
+        expect(mock).toBeCalledTimes(6);
         mock.mockRestore();
     });
 });

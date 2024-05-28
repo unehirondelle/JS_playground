@@ -1,12 +1,14 @@
-export class Counter {
+class Counter {
     constructor(n) {
         this.n = n;
     }
 
-    increment(){
+    increment() {
         return this.n++;
     }
 }
+
+module.exports = {Counter};
 
 const counter = Counter(10);
 console.log('class', counter())
