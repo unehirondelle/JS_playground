@@ -40,3 +40,7 @@ describe('timeLimitedCache', () => {
         jest.runAllTimers();
     });
 });
+
+console.log("".hasOwnProperty(0));
+
+console.log(Object.hasOwn([1], 0));

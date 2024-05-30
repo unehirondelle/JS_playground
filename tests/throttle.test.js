@@ -38,6 +38,5 @@ describe('throttle', () => {
         expect(mock).toHaveBeenCalledTimes(2);
         expect(mock).toHaveBeenNthCalledWith(2, 2);
     });
-
 });
 

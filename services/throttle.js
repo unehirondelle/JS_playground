@@ -1,15 +1,17 @@
 const throttle = (fn, t) => {
     let isThrottled = false;
     let nextArgs = null; // args state for the next fn call
+    let timer;
 
     const helper = () => {
         isThrottled = false;
+        clearTimeout(timer);
 
         if (nextArgs) { // next fn call after t time passed when fn was triggered during t time
             fn(...nextArgs);
             nextArgs = null; // reset args for the next call to avoid infinite loop
             isThrottled = true; // fn is throttled again to prevent the following call
-            setTimeout(helper, t); // unleash the following fn execution after t time passes
+            timer = setTimeout(helper, t); // unleash the following fn execution after t time passes
         }
     };
 
@@ -19,7 +21,7 @@ const throttle = (fn, t) => {
         } else {
             fn(...args); // initial fn call
             isThrottled = true;
-            setTimeout(helper, t); // unleash next function execution after t time passes
+            timer = setTimeout(helper, t); // unleash next function execution after t time passes
         }
     };
 };

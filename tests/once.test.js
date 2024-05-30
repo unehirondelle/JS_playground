@@ -1,4 +1,5 @@
 const {once} = require("../services/once");
+
 describe('once', () => {
     it('calls function with same args only once', () => {
         const fn = a => a;

@@ -4,8 +4,8 @@ const sortBy = (arr, fn, mode) => {
 
     //comparison-based
     return arr.sort((a, b) => {
-        const comparison = mode === 'desc' ? fn(b) < fn(a) : fn(a) < fn(b);
-        return comparison ? -1 : 1;
+        const res = fn(a) < fn(b) ? -1 : 1;
+        return mode === 'desc' ? -res : res;
     });
 };
 
