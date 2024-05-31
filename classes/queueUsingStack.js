@@ -3,22 +3,20 @@ const {Stack} = require("./stack");
 class Queue {
     constructor() {
         this.stack = new Stack();
-        this.storageStack = new Stack();
+        this.helperStack = new Stack();
     }
 
     enqueue(element) {
-        for (let i = 0; i < this.stack.size(); i++) {
-            const el = this.stack.peek()
-            this.storageStack.push(el);
+        while (this.stack.size() > 0) {
+            this.helperStack.push(this.stack.pop());
         }
 
         // now add the element to stack1
         this.stack.push(element);
 
         // transfer back
-        for (let i = 0; i < this.storageStack.size(); i++) {
-            const el = this.storageStack.peek();
-            this.stack.push(el);
+        while (this.helperStack.size() > 0) {
+            this.stack.push(this.helperStack.pop());
         }
 
         return this;
@@ -34,6 +32,10 @@ class Queue {
 
     dequeue() {
         return this.stack.pop();
+    }
+
+    getQueue() {
+        return this.stack.getValue();
     }
 }
 

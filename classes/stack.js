@@ -3,16 +3,14 @@ class Stack { // vertical construction, new stuff is always at the top
 
     push(element) { // add element to stack
         this.#arr.unshift(element);
-        return this;
     }
 
     peek() { // get the top element
-        return this.#arr.shift();
+        return this.#arr[0];
     }
 
-    pop() { // remove the top element
-        this.#arr.shift();
-        return this;
+    pop() { // remove  and return the top element
+        return this.#arr.shift();
     }
 
     size() { /* count of elements */
