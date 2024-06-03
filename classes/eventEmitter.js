@@ -10,6 +10,9 @@ module.exports = class EventEmitter {
         return {
             unsubscribe: () => {
                 this.eventMap[eventName].delete(callback);
+                if (this.eventMap[eventName].size === 0) {
+                    delete this.eventMap[eventName];
+                }
             }
         };
     }
