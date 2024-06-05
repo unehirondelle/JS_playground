@@ -1,9 +1,13 @@
 const jsonStringify = (val) => {
-    if (val === null) { // real JSON.parse would throw an error for 'undefined' even though JSON.stringify doesn't complaint
-        return String(val);
+    if ([null, undefined, Infinity, -Infinity, NaN].includes(val)) {
+        return 'null';
     }
 
-    if (typeof val === 'function' || val === undefined) { // functions cannot be stringify
+    if (typeof val === 'bigint') {
+        throw Error('bigints are not supported');
+    }
+
+    if (typeof val === 'function' || typeof val === 'symbol') { // functions cannot be stringify
         return;
     }
 
@@ -12,12 +16,21 @@ const jsonStringify = (val) => {
     }
 
     if (Array.isArray(val)) { // array
-        return `[${val.map(el => jsonStringify(el)).join(',')}]`;
+        return `[${val.map(el => {
+            if (typeof el === 'symbol') {
+                return 'null'
+            } else {
+                return jsonStringify(el);
+            }
+        }).join(',')}]`;
 
     }
 
     if (typeof val === 'object') {
-        const entries = Object.entries(val);
+        if (val instanceof Date) {
+            return `"${val.toISOString()}"`;
+        }
+        const entries = Object.entries(val).filter(([k, v]) => v !== undefined || typeof v === 'symbol');
         return `{${entries.map(([k, v]) => `"${k}":${jsonStringify(v)}`)}}`
     }
 
