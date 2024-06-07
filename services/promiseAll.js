@@ -1,6 +1,10 @@
 const {log} = require("./log");
 const promiseAll = (fns) => {
     return new Promise((resolve, reject) => {
+        if (fns.length === 0) {
+            resolve([]);
+        }
+
         let inProgress = 0;
         const results = Array(fns.length);
 
