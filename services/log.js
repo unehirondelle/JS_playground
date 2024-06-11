@@ -1,4 +1,4 @@
-const log = (str) => {
+const log = (str, notStr) => {
     const addFirstChar = num => (num + 1).toString().padStart(2, '0');
     const date = new Date();
     const calendar = [
@@ -12,7 +12,7 @@ const log = (str) => {
         addFirstChar(date.getSeconds()),
     ];
 
-    console.log(`${calendar.join('-')}  ${time.join(':')}.${date.getMilliseconds()} | ${str}`);
+    console.log(`${calendar.join('-')}  ${time.join(':')}.${date.getMilliseconds()} | ${str}`, notStr ? notStr : undefined);
 };
 
 module.exports = {log};
