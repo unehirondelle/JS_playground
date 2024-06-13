@@ -1,11 +1,13 @@
 const once = (fn) => {
-    let called = false
+    let called = false;
+    let result;
 
-    return (...args) => {
+    return function (...args) {
         if (!called) {
             called = true;
-            return fn(...args);
+            result = fn.call(this,...args);
         }
+        return result
     }
 
     //alternative
