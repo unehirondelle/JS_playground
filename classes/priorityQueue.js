@@ -81,6 +81,10 @@ class PriorityQueue {
     poll() {
         return this.arr.shift();
     }
+
+    isEmpty() {
+        return this.arr.length === 0;
+    }
 }
 
 module.exports = {PriorityQueue};
