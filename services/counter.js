@@ -25,4 +25,15 @@ const createCounterII = (init) => {
     }
 };
 
-module.exports = {createCounter, createCounterII};
+const createCounterIII = () => {
+    let counter = 0;
+
+    return {
+        get count() {
+            return counter++;
+        }
+    }
+}
+
+module.exports = {createCounter, createCounterII, createCounterIII};
+
