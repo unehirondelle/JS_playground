@@ -23,7 +23,7 @@ const pickUpStones = (num, isA = true) => {
     // return res;
 
 
-    // loop from bottom to top (shifting window) - you only need to calculate first 2 iterations and make the decision based on those results
+    // loop from bottom to top (sliding window) - you only need to calculate first 2 iterations and make the decision based on those results
     if (num === 1) {
         return 'B';
     }
