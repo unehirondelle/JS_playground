@@ -25,4 +25,10 @@ describe('chunkArray', () => {
         const size = 6;
         expect(chunkArray(arr, size)).toEqual([]);
     });
+    it('should return an empty array given an empty array and size equal to zero', () => {
+        expect(chunkArray([], 0)).toEqual([]);
+    });
+    it('should return an empty array given non-empty array and size of 0', () => {
+        expect(chunkArray([1,2,3], 0)).toEqual([]);
+    });
 });
